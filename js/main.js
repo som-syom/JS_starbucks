@@ -1,3 +1,4 @@
+	// ------------------- 검색바 영역
 const searchEl = document.querySelector('.search');
 const searchInputEl = searchEl.querySelector('input');
 
@@ -15,7 +16,7 @@ searchInputEl.addEventListener('blur', function () {
 	searchInputEl.setAttribute('placeholder', '');
 });
 
-
+	// ------------------------- 뱃지영역
 const badgeEl = document.querySelector('header .badges');
 
 window.addEventListener('scroll', _.throttle(function () {
@@ -39,3 +40,14 @@ window.addEventListener('scroll', _.throttle(function () {
 	}
 }, 300));
 // _.throttle(함수, 시간밀리세컨드단위) 밀리세컨드 단위 300밀리세컨드로 부하를 준다
+
+
+	// ----------------- 비주얼 영역
+const fadeEls = document.querySelectorAll('.visual .fade-in');
+fadeEls.forEach(function (fadeEl, index) {
+	// gsap.to(요소, 지속시간(초단위), 옵션); => 애니메이션효과
+	gsap.to(fadeEl, 1, {
+		delay: (index + 1) * .7, //하나씩 순차적으로 나오게 하기
+		opacity: 1
+	});
+});
