@@ -38,7 +38,7 @@ a {
 	color: #fff;
 }
 .btn.btn--reverse {
-	border-color: #333;
+	background-color: #333;
 	color: #fff;
 }
 .btn.btn--reverse:hover {
@@ -461,5 +461,49 @@ header .badges .badge {
 .notice .promotion .swiper-next:hover {
 	background-color: #333;
 	color: #fff;
+}
+
+
+/* REWARDS */
+.rewards {
+	position: relative;
+}
+.rewards .bg-left {
+	width: 50%;
+	height: 100%;
+	background-color: #272727;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.rewards .bg-right {
+	width: 50%;
+	height: 100%;
+	background-color: #d5c798;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+.rewards .inner {
+	background-image: url("../images/rewards.jpg");
+	height: 241px;
+}
+.rewards .btn-group {
+	position: absolute;
+	bottom: 24px;
+	right: 0;
+	width: 250px;
+	display: flex;
+	flex-wrap: wrap;
+}
+.rewards .btn-group .btn.sign-up {
+	margin-right: 10px;
+}
+.rewards .btn-group .btn.sign-in {
+	width: 110px;
+}
+.rewards .btn-group .btn.gift {
+	margin-top: 10px;
+	flex-grow: 1;
 }
 
