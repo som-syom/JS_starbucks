@@ -18,6 +18,7 @@ searchInputEl.addEventListener('blur', function () {
 
 	// ------------------------- 뱃지영역
 const badgeEl = document.querySelector('header .badges');
+const toTopEl = document.querySelector('#to-top');
 
 window.addEventListener('scroll', _.throttle(function () {
 	// console.log(window.scrollY);
@@ -29,6 +30,10 @@ window.addEventListener('scroll', _.throttle(function () {
 			opacity: 0,
 			display: 'none'
 		});
+		// to-top 버튼 보이게
+		gsap.to(toTopEl, .2, {
+			x: 0,
+		});
 	}
 	else {
 		//배지 다시 보이게
@@ -37,9 +42,20 @@ window.addEventListener('scroll', _.throttle(function () {
 			opacity: 1,
 			display: 'block'
 		});
+		// to-top 숨기게
+		gsap.to(toTopEl, .2, {
+			x: 100,
+		});
 	}
 }, 300));
-// _.throttle(함수, 시간밀리세컨드단위) 밀리세컨드 단위 300밀리세컨드로 부하를 준다
+// _.throttle(함수, 시간밀리세컨드단위) 밀리세컨드 단위, 300밀리세컨드로 부하를 준다
+
+// to-top 스크롤 맨위로 올리기
+toTopEl.addEventListener('click', function () {
+	gsap.to(window, .7, {
+		scrollTo: 0
+	});
+})
 
 
 	// ----------------- 비주얼 영역
@@ -78,6 +94,17 @@ new Swiper('.promotion .swiper-container', {
 		nextEl: '.promotion .swiper-next'
 	}
 });
+// ------------swiper 아래
+new Swiper('.awards .swiper-container', {
+	autoplay: true,
+	loop: true,
+	spaceBetween: 30,
+	slidesPerView: 5,
+	navigation: {
+		prevEl: '.awards .swiper-prev',
+		nextEl: '.awards .swiper-next'
+	}
+})
 
 
 // -------------------------- 버튼누르면 숨기고 보이게 하기
@@ -119,3 +146,20 @@ function floatingObject(selector, delay, size) {
 floatingObject('.floating1', 1, 15);
 floatingObject('.floating2', .5, 15);
 floatingObject('.floating3', 1.5, 20);
+
+
+// ----------------------------- scroll magic
+const spyElse = document.querySelectorAll('section.scroll-spy');
+spyElse.forEach(function (spyEl) {
+	new ScrollMagic
+		.Scene({
+			triggerElement: spyEl, // 보여짐의 여부를 감시할 요소를 선택
+			triggerHook: .8, // 위가 0이고 아래가 1, 감지되는 지점
+		})
+		.setClassToggle(spyEl, 'show')
+		.addTo(new ScrollMagic.Controller());
+})
+
+
+const thisYear = document.querySelector('.this-year');
+thisYear.textContent = new Date().getFullYear();
